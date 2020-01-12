@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STeM", "STeM\STeM.csproj", "{5ABB4C93-898E-4916-AD93-3017B2F62952}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ABB4C93-898E-4916-AD93-3017B2F62952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABB4C93-898E-4916-AD93-3017B2F62952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABB4C93-898E-4916-AD93-3017B2F62952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABB4C93-898E-4916-AD93-3017B2F62952}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B865BB6-73EA-440C-A12E-DD195E504131}
+	EndGlobalSection
+EndGlobal
