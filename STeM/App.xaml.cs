@@ -1,6 +1,8 @@
 ﻿using STeM.Infrastructure.Exceptions;
 using STeM.Infrastructure.EyeTracking;
 using STeM.Infrastructure.Logging;
+using STeM.Infrastructure.Overlays;
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -40,7 +42,9 @@ namespace STeM
 #endif
                     logger.Log(ev.Exception);
                 };
-                var window = new MainWindow(config, eyeTracker, logger);
+                var overlays = new List<IOverlay>();
+                overlays.Add(new PositionOverlay());
+                var window = new MainWindow(config, eyeTracker, logger, overlays);
                 window.Show();
             }
             catch (Exception exception)

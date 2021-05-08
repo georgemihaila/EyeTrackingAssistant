@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:STeM"
         mc:Ignorable="d"
         Height="450" 
         Width="800"
@@ -13,8 +12,7 @@
         WindowState="Maximized"
         Topmost="True"
         Background="Transparent">
-    <Canvas x:Name="LayoutRoot">
-        <TextBlock x:Name="EyePosition_TextBlock" Text="TextBlock" TextWrapping="Wrap" Canvas.Left="10" Canvas.Top="10"/>
-
+    <Canvas x:Name="LayoutRoot" >
+        
     </Canvas>
 </Window>

@@ -19,6 +19,7 @@ namespace STeM
         /// <returns></returns>
         /// <exception cref="FileNotFoundException">Configuration file {jsonfilename} not found.</exception>
         /// <exception cref="StartupException">Configuration file {jsonfilename} not found.
+        /// or
         /// Malformed configuration file</exception>
         public static ApplicationConfiguration FromJsonFile(string jsonfilename)
         {
