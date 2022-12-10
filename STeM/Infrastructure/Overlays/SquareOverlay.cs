@@ -7,19 +7,19 @@ using System.Windows.Controls;
 
 namespace STeM.Infrastructure.Overlays
 {
-    public class SquareOverlay : IOverlay
+    public class SquareOverlay : OverlayBase
     {
 
         LinkedList<Vector2> _lastPositions = new LinkedList<Vector2>();
 
         Vector2 _correction = new Vector2(0, 0);
 
-        public void DrawOn(ref Canvas source)
+        public override void Update(Canvas parent)
         {
-
+            AddIfNeeded(parent);
         }
 
-        public void OnEyePositionChanged(Vector2 position)
+        public override void OnEyePositionChanged(Vector2 position)
         {
 
         }

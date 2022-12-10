@@ -13,6 +13,7 @@
         Topmost="True"
         Background="Transparent">
     <Canvas x:Name="LayoutRoot" >
-        
+        <Button Content="Button" Canvas.Left="215" Canvas.Top="90"/>
+
     </Canvas>
 </Window>

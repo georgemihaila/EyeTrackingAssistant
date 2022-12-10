@@ -42,8 +42,9 @@ namespace STeM
 #endif
                     logger.Log(ev.Exception);
                 };
-                var overlays = new List<IOverlay>();
+                var overlays = new List<OverlayBase>();
                 overlays.Add(new PositionOverlay());
+                overlays.Add(new TraceOverlay(500));
                 var window = new MainWindow(config, eyeTracker, logger, overlays);
                 window.Show();
             }

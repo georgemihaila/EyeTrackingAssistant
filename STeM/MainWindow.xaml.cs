@@ -31,9 +31,9 @@ namespace STeM
         private readonly ApplicationConfiguration _configuration;
         private readonly ILogger _logger;
         private readonly IEyeTracker _eyeTracker;
-        private readonly IEnumerable<IOverlay> _overlays;
+        private readonly IEnumerable<OverlayBase> _overlays;
 
-        public MainWindow(ApplicationConfiguration configuration, IEyeTracker eyeTracker, ILogger logger, IEnumerable<IOverlay> overlays)
+        public MainWindow(ApplicationConfiguration configuration, IEyeTracker eyeTracker, ILogger logger, IEnumerable<OverlayBase> overlays)
         {
             if (configuration is null)
                 throw new ArgumentNullException(nameof(configuration));
@@ -60,7 +60,7 @@ namespace STeM
             foreach(var overlay in _overlays)
             {
                 overlay.OnEyePositionChanged(e);
-                overlay.DrawOn(ref LayoutRoot);
+                overlay.Update(LayoutRoot);
             }
 
         }
