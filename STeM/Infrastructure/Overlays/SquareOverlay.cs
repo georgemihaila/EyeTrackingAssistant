@@ -13,15 +13,5 @@ namespace STeM.Infrastructure.Overlays
         LinkedList<Vector2> _lastPositions = new LinkedList<Vector2>();
 
         Vector2 _correction = new Vector2(0, 0);
-
-        public override void Update(Canvas parent)
-        {
-            AddIfNeeded(parent);
-        }
-
-        public override void OnEyePositionChanged(Vector2 position)
-        {
-
-        }
     }
 }

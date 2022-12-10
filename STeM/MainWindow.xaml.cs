@@ -3,7 +3,6 @@ using STeM.Infrastructure.Heatmaps;
 using STeM.Infrastructure.Hooks;
 using STeM.Infrastructure.Logging;
 using STeM.Infrastructure.Overlays;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

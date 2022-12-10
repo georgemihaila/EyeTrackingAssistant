@@ -1,4 +1,6 @@
-﻿using STeM.Infrastructure.Exceptions;
+﻿using GlobalLowLevelInputHooks;
+
+using STeM.Infrastructure.Exceptions;
 using STeM.Infrastructure.EyeTracking;
 using STeM.Infrastructure.Logging;
 using STeM.Infrastructure.Overlays;
@@ -19,7 +21,7 @@ namespace STeM
     public partial class App : Application
     {
         private const string _configFilename = "config.json";
-
+        private readonly MouseHook _mouseHook = new MouseHook();
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -44,7 +46,8 @@ namespace STeM
                 };
                 var overlays = new List<OverlayBase>();
                 overlays.Add(new PositionOverlay());
-                overlays.Add(new TraceOverlay(500));
+                overlays.Add(new TraceOverlay());
+                overlays.Add(new MouseOverlay());
                 var window = new MainWindow(config, eyeTracker, logger, overlays);
                 window.Show();
             }
@@ -52,6 +55,12 @@ namespace STeM
             {
                 throw new StartupException("Initialization error", exception);
             }
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _mouseHook.Dispose();
+            base.OnExit(e);
         }
     }
 }

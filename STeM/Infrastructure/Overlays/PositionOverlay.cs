@@ -16,24 +16,13 @@ namespace STeM.Infrastructure.Overlays
         {
             Foreground = Brushes.White,
         };
-        private bool _addedToCanvas = false;
-
-        public override void Update(Canvas parent)
+        public PositionOverlay()
         {
-            AddIfNeeded(parent);
-            if (!_addedToCanvas)
-            {
-                _addedToCanvas = true;
-                parent.Children.Add(_overlayTextBlock);
-                Canvas.SetTop(_overlayTextBlock, 0);
-                Canvas.SetLeft(_overlayTextBlock, 0);
-            }
-            _overlayTextBlock.Text = $"X: {_lastPosition.X}\nY: {_lastPosition.Y}";
+            RegisterElementsIfNeeded(_overlayTextBlock);
         }
-
-        public override void OnEyePositionChanged(Vector2 position)
+        protected override void OnUpdateInternal()
         {
-            _lastPosition = position;
+            _overlayTextBlock.Text = $"X: {_lastPosition.X}\nY: {_lastPosition.Y}";
         }
     }
 }

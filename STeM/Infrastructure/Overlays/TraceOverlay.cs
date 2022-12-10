@@ -18,37 +18,31 @@ namespace STeM.Infrastructure.Overlays
     /// </summary>
     public class TraceOverlay : OverlayBase
     {
-        private readonly int _gazeLengthMilliseconds;
+        private Brush _brush;
+        private const double OPACITY = 0.8;
         private readonly Polyline _gazePath = new Polyline()
         {
-            Stroke = Brushes.White,
             StrokeThickness = 5
         };
-        private bool _pathInitialized = false;
-        public TraceOverlay(int gazeLengthMilliseconds)
+        public TraceOverlay()
         {
-            _gazeLengthMilliseconds = gazeLengthMilliseconds;
+            _brush = new SolidColorBrush(Colors.White);
+            _gazePath.Stroke = _brush;
+            RegisterElementsIfNeeded(_gazePath);
+        }
+        protected override void OnUpdateInternal()
+        {
+
+            _gazePath.Points = new PointCollection(_lastIntervalEyeGazePositions.Select(x => new System.Windows.Point(x.Vector2.X, x.Vector2.Y)));
+        }
+        protected override void OnFocus(Vector2 position)
+        {
+            _brush.Opacity = 0;
         }
 
-        private readonly List<TimedVector2> _lastIntervalEyeGazePositions = new List<TimedVector2>();
-        public override void OnEyePositionChanged(Vector2 position)
+        protected override void OnDefocus(Vector2 position)
         {
-            _lastIntervalEyeGazePositions.RemoveAll(x => DateTime.Now.Subtract(x.Time).TotalMilliseconds > _gazeLengthMilliseconds);
-            _lastIntervalEyeGazePositions.Add(new TimedVector2(DateTime.Now, position));
-        }
-
-        public override void Update(Canvas parent)
-        {
-            if (!_pathInitialized)
-            {
-                parent.Children.Add(_gazePath);
-                _pathInitialized = true;
-            }
-
-            if (!_lastIntervalEyeGazePositions.Select(x => x.Vector2).IsWhiteNoise())
-            {
-                _gazePath.Points = new PointCollection(_lastIntervalEyeGazePositions.Select(x => new System.Windows.Point(x.Vector2.X, x.Vector2.Y)));
-            }
+            _brush.Opacity = OPACITY;
         }
     }
 }

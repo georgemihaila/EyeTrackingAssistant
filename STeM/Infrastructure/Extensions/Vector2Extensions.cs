@@ -1,4 +1,6 @@
-﻿using System;
+﻿using STeM.Infrastructure.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -15,7 +17,9 @@ namespace STeM.Infrastructure.Extensions
             var yVariance = dataPoints.Select(x => x.Y).GetVariance();
             return xVariance < WHITE_NOISE_THRESHOLD || yVariance < WHITE_NOISE_THRESHOLD;
         }
-
+        public static Vector2 GetAverage(this IEnumerable<Vector2> dataPoints) => new Vector2(dataPoints.Select(x => x.X).Average(), dataPoints.Select(x => x.Y).Average());
+        public static Vector2 GetAverage(this IEnumerable<TimedVector2> dataPoints) => dataPoints.Select(x => x.Vector2).GetAverage();
+        public static Vector2 GetVariance(this IEnumerable<TimedVector2> dataPoints) => new Vector2((float)dataPoints.Select(x=>x.Vector2.X).GetVariance(), (float)dataPoints.Select(x=>x.Vector2.Y).GetVariance());
         public static double GetVariance(this IEnumerable<float> dataPoints) 
         {
             var mean = dataPoints.Average();
